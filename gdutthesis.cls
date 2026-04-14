@@ -25,7 +25,7 @@
 \RequirePackage{ifthen,calc}
 
 \ifistwoside
-	\LoadClass[a4paper,12pt,openright,twoside]{book}
+	\LoadClass[a4paper,12pt,openany,twoside]{book}
 \else
 	\LoadClass[a4paper,12pt,openany,oneside]{book}
 \fi
@@ -118,32 +118,32 @@
 \def\songti{\song}
 \def\heiti{\hei}
 
-\newcommand{\chuhao}{\fontsize{42bp}{\baselineskip}\selectfont}
-\newcommand{\xiaochu}{\fontsize{36bp}{\baselineskip}\selectfont}
-\newcommand{\yihao}{\fontsize{26bp}{\baselineskip}\selectfont}
-\newcommand{\xiaoyi}{\fontsize{24bp}{\baselineskip}\selectfont}
-\newcommand{\erhao}{\fontsize{22bp}{\baselineskip}\selectfont}
-\newcommand{\xiaoer}{\fontsize{18bp}{\baselineskip}\selectfont}
-\newcommand{\sanhao}{\fontsize{16bp}{\baselineskip}\selectfont}
-\newcommand{\xiaosan}{\fontsize{15bp}{\baselineskip}\selectfont}
-\newcommand{\sihao}{\fontsize{14bp}{\baselineskip}\selectfont}
-\newcommand{\xiaosi}{\fontsize{12bp}{\baselineskip}\selectfont}
-\newcommand{\wuhao}{\fontsize{10.5bp}{\baselineskip}\selectfont}
-\newcommand{\xiaowu}{\fontsize{9bp}{\baselineskip}\selectfont}
-\newcommand{\liuhao}{\fontsize{7.5bp}{\baselineskip}\selectfont}
-\newcommand{\xiaoliu}{\fontsize{6.5bp}{\baselineskip}\selectfont}
-\newcommand{\qihao}{\fontsize{5.5bp}{\baselineskip}\selectfont}
-\newcommand{\bahao}{\fontsize{5.0bp}{\baselineskip}\selectfont}
+\newcommand{\chuhao}{\fontsize{42bp}{50.4bp}\selectfont}
+\newcommand{\xiaochu}{\fontsize{36bp}{43.2bp}\selectfont}
+\newcommand{\yihao}{\fontsize{26bp}{31.2bp}\selectfont}
+\newcommand{\xiaoyi}{\fontsize{24bp}{28.8bp}\selectfont}
+\newcommand{\erhao}{\fontsize{22bp}{26.4bp}\selectfont}
+\newcommand{\xiaoer}{\fontsize{18bp}{21.6bp}\selectfont}
+\newcommand{\sanhao}{\fontsize{16bp}{19.2bp}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15bp}{18bp}\selectfont}
+\newcommand{\sihao}{\fontsize{14bp}{16.8bp}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12bp}{23.4bp}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5bp}{12.6bp}\selectfont}
+\newcommand{\xiaowu}{\fontsize{9bp}{10.8bp}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.5bp}{9bp}\selectfont}
+\newcommand{\xiaoliu}{\fontsize{6.5bp}{7.8bp}\selectfont}
+\newcommand{\qihao}{\fontsize{5.5bp}{6.6bp}\selectfont}
+\newcommand{\bahao}{\fontsize{5.0bp}{6bp}\selectfont}
 
-\renewcommand{\baselinestretch}{1.25}  % 1.5行距，计算公式 “行距/1.2=倍数”
+\renewcommand{\baselinestretch}{1}
 
 %------------------------------------------------------------------------
 %中文元素
 %------------------------------------------------------------------------
-\renewcommand\contentsname{目\hspace{5em}录}
-\newcommand\ackname{致\hspace{1em}谢}
+\renewcommand\contentsname{目\hspace{2em}录}
+\newcommand\ackname{致谢}
 \newcommand\equationname{公式}
-\renewcommand\bibname{参\hspace{1em}考\hspace{1em}文\hspace{1em}献}
+\renewcommand\bibname{参考文献}
 \renewcommand\figurename{图}
 \renewcommand\tablename{表}
 \renewcommand\appendixname{附录}
@@ -154,8 +154,8 @@
 %------------------------------------------------------------------------
 %页边距与页面样式
 %------------------------------------------------------------------------
-% 手册要求：上30mm，下25mm，左30mm，右20mm
-\geometry{top=30mm,bottom=25mm,left=30mm,right=20mm,nohead}
+% 真实 Word 模板使用双面镜像页边距：内侧30mm，外侧20mm。
+\geometry{top=30mm,bottom=25mm,inner=30mm,outer=20mm,nohead}
 \geometry{footskip=10mm}
  
 \newcommand\dlmu[2][6.5cm]{\hskip1pt\underline{\hb@xt@#1{\hss#2\hss}}\hskip3pt} %设置下划线
@@ -184,7 +184,8 @@
 	\@mainmattertrue
 	\pagenumbering{arabic}
 	\normalsize 
-	\def\@tabular{\wuhao\old@tabular}
+	% 表内文字为五号，使用正常表格行距，不继承正文 1.5 倍行距。
+	\def\@tabular{\fontsize{10.5bp}{12.6bp}\selectfont\old@tabular}
 	\pagestyle{mainpage}
 }
 
@@ -243,7 +244,7 @@
 %------------------------------------------------------------------------
 \newcommand\cabstractname{摘\hspace{2em}要}
 \newcommand\ckeywordsname{{\heiti \sihao \textbf{关键词}}}
-\newcommand\ckeywords[1]{\xiaosi \songti \ckeywordsname: #1}
+\newcommand\ckeywords[1]{\xiaosi \songti \ckeywordsname：#1}
 
 \newcommand\eabstractname{Abstract}
 \newcommand\ekeywordsname{\sihao \textbf{KEY WORDS}}
@@ -253,6 +254,7 @@
 	\titleformat*{\chapter}{\sanhao \heiti \filcenter \bfseries}
 	\chapter*{\cabstractname}
 	\xiaosi
+	\vspace*{-7bp}
 	\@afterheading}
 {\par\vspace{1em}\par}
 
@@ -260,16 +262,23 @@
 	\titleformat*{\chapter}{\sanhao \rmfamily \filcenter \bfseries}
 	\chapter*{\eabstractname}
 	\xiaosi
+	\vspace*{-9bp}
 	\@afterheading}
 {\par\vspace{1em}\par}
+
+\renewcommand\tableofcontents{%
+	\chapter*{\contentsname}%
+	\vspace*{-14bp}%
+	\@starttoc{toc}%
+}
 
 \titlecontents{chapter}[0pt]{\vspace{6bp} \heiti \xiaosi}
 	{\thecontentslabel\quad}{}
 	{\titlerule*{.}\contentspage}
-\titlecontents{section}[1.5em]{\songti \xiaosi}
+\titlecontents{section}[2em]{\songti \xiaosi}
 	{\thecontentslabel\quad}{}
 	{\titlerule*{.}\contentspage}
-\titlecontents{subsection}[3em]{\songti \xiaosi}
+\titlecontents{subsection}[4em]{\songti \xiaosi}
 	{\thecontentslabel\quad}{}
 	{\titlerule*{.}\contentspage}
 
@@ -307,18 +316,27 @@
 \titleformat{\subsection}{\heiti \xiaosi}{\thesubsection}{1em}{}
 
 \titlespacing{\chapter}{0pt}{0pt}{1em}
-\titlespacing{\section}{0pt}{0.5em}{0.5em}
-\titlespacing{\subsection}{0pt}{0.5em}{0.5em}
+\titlespacing{\section}{0pt}{.5\baselineskip}{.4\baselineskip}
+\titlespacing{\subsection}{0pt}{.5\baselineskip}{.4\baselineskip}
 
-\renewcommand\normalsize{\@setfontsize\normalsize{12bp}{\baselineskip}%
+\renewcommand\normalsize{\@setfontsize\normalsize{12bp}{24.5bp}%
 \setlength\abovedisplayskip{10bp \@plus 2bp \@minus 2bp}%
 \setlength\abovedisplayshortskip{10bp \@plus 2bp \@minus 2bp}%
 \setlength\belowdisplayskip{\abovedisplayskip}%
 \setlength\belowdisplayshortskip{\abovedisplayshortskip}%
 }
 
-\setlength{\parindent}{2.5em}
+\setlength{\parindent}{2em}
 \setlength{\parskip}{0bp \@plus .5bp \@minus .5bp}
+\renewcommand{\@listi}{%
+	\leftmargin\leftmargini
+	\parsep 0bp%
+	\topsep 0bp%
+	\itemsep 0bp%
+	\partopsep 0bp%
+}
+\let\@listI\@listi
+\@listi
 
 \renewenvironment{thebibliography}[1]{%
 	\thispagestyle{emptypage}

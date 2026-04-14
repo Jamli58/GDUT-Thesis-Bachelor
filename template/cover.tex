@@ -1,0 +1,40 @@
+%------------------------------------------------------------------------
+% 封面版式（模板内部文件，学生一般无需修改）
+%------------------------------------------------------------------------
+\begin{flushleft}
+\hspace{8.5mm}\includegraphics[height=2.19cm,width=2.21cm]{xiaohui.jpg}
+\end{flushleft}
+\begin{center}
+\includegraphics[height=2.96cm,width=10.56cm]{mingchen.jpg}
+\end{center}
+\vspace{13.9mm}
+\begin{center}
+{\heiti \bfseries \erhao {本科毕业设计（论文）}}
+\end{center}
+\vspace{12.6mm}
+\begin{center}
+\makeatletter
+\ifthenelse{\gduttranslation=0}{\heiti \erhao \textbf{\@title}}{\song \erhao {外文参考文献译文及原文}}
+\makeatother
+\end{center}
+\vspace{34.7mm}
+\begin{center}
+\makeatletter
+\newcommand{\coverfield}[3]{%
+  \makebox[0pt][l]{\hspace*{-135.3pt}{\sanhao \heiti {#1\hspace{3mm}\dlmu[5.6cm]{\textbf{#2}}}}}\\\vspace{#3}%
+}
+\coverfield{学\hspace{2em}院}{\@college}{2.4mm}
+\coverfield{专\hspace{2em}业}{\@major}{13.4mm}
+\coverfield{年级班别}{\@grade 级（\@class）班}{2.4mm}
+\coverfield{学\hspace{2em}号}{\@serialno}{2.4mm}
+\coverfield{学生姓名}{\@author}{2.4mm}
+\makebox[0pt][l]{\hspace*{-135.3pt}{\sanhao \heiti {指导教师\hspace{3mm}\dlmu[5.6cm]{\textbf{\@supervisor}}}}}
+\makeatother
+\end{center}
+\vfill
+\begin{center}
+\makeatletter
+\sanhao \heiti {\CJK@today}
+\makeatother
+\end{center}
+\vspace*{17bp}

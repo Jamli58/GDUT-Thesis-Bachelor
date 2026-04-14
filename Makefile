@@ -15,7 +15,13 @@ OPENER  := open
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex $(wildcard data/*.tex) $(wildcard ref/*.bib) \
+$(MAIN).pdf: $(MAIN).tex student-info.tex \
+             $(wildcard frontmatter/*.tex) \
+             $(wildcard chapters/*.tex) \
+             $(wildcard backmatter/*.tex) \
+             $(wildcard translation/*.tex) \
+             $(wildcard references/*.bib) \
+             $(wildcard template/*.tex) \
              gdutthesis.cls mygdut.sty
 	$(LATEX) $(MAIN)
 	-$(BIBTEX) $(MAIN)

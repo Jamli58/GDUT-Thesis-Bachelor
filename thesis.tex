@@ -1,44 +1,51 @@
-%------------------------------------------------------------------------
-% 广东工业大学本科毕业设计（论文）LaTeX 模板 —— 主文件
+% ======================================================================
+% 广东工业大学本科毕业设计（论文）LaTeX 模板
+%
+% 学生通常只需要：
+%   1. 修改 student-info.tex
+%   2. 修改 frontmatter/abstract.tex
+%   3. 修改 chapters/ 里的章节文件
+%   4. 修改 references/references.bib
 %
 % 文档类选项：
 %   ttf / otf / mac  字体方案：
 %                    ttf = Windows 自带的 SimSun/SimHei
 %                    otf = Overleaf 自带的 Fandol 字体
 %                    mac = macOS 自带的 Songti SC / Heiti SC
-%   oneside          单面打印（手册默认要求）
+%   twoside          双面镜像页边距（与学校 Word 模板一致）
 %   cn / en          cn=编译中文主论文；en=编译外文译文/原文装订册
-%------------------------------------------------------------------------
-\documentclass[mac,oneside,cn]{gdutthesis}
+% ======================================================================
+\documentclass[mac,twoside,cn]{gdutthesis}
 \usepackage{mygdut}
+\input{student-info}
 
 \begin{document}
 \graphicspath{{figures/}}
 
 %========================= 前置部分 =========================
 \frontmatter
-\input{data/cover}                        % 封面
-\iftrans{\input{data/abstract}}{}         % 中英文摘要
+\input{template/cover}                    % 封面
+\iftrans{\input{frontmatter/abstract}}{}  % 中英文摘要
 \tableofcontents                          % 目录
 
 %========================= 正文部分 =========================
 \mainmatter
 \iftrans{%
-  \input{data/chap01}%                    % 绪论
-  \input{data/chap02}%                    % 正文主体
-  \input{data/chap03}%                    % 结论
+  \input{chapters/01-introduction}%       % 绪论
+  \input{chapters/02-main-content}%       % 正文主体
+  \input{chapters/03-conclusion}%         % 结论
 }{%
-  \input{data/translation}%               % 译文（en 模式）
-  \input{data/original}%                  % 原文（en 模式）
+  \input{translation/translated-article}% % 译文（en 模式）
+  \input{translation/original-article}%   % 原文（en 模式）
 }
 
 %========================= 参考文献 =========================
 \bibliographystyle{gbt7714-numerical}
-\iftrans{\bibliography{ref/refs}}{}
+\iftrans{\bibliography{references/references}}{}
 
 %========================= 致谢与附录 =========================
-\iftrans{\input{data/ack}}{}              % 致谢
+\iftrans{\input{backmatter/acknowledgements}}{} % 致谢
 \backmatter
-\iftrans{\input{data/appendix01}}{}       % 附录
+\iftrans{\input{backmatter/appendix-a}}{} % 附录
 
 \end{document}
