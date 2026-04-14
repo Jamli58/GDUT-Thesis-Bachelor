@@ -3,60 +3,63 @@
 面向 GDUT 本科生的毕业设计（论文）LaTeX 模板，版式按
 《广东工业大学毕业设计（论文）手册》（2025 年版）整理。
 
-## 从这里开始
+## 学生需要改动的文件
 
-第一次使用时，按这个顺序改文件即可：
+按下面的顺序改，一次就能把整篇论文写完：
 
-| 先改 | 文件 | 用途 |
+| 顺序 | 文件 | 用途 |
 | :-- | :-- | :-- |
-| 1 | `student-info.tex` | 学号、姓名、题目、学院、专业、指导教师 |
-| 2 | `frontmatter/abstract.tex` | 中文摘要、英文摘要、关键词 |
-| 3 | `chapters/01-introduction.tex` | 第 1 章 绪论 |
-| 4 | `chapters/02-main-content.tex` | 正文主体、方法、设计、实验等 |
-| 5 | `chapters/03-conclusion.tex` | 结论与展望 |
-| 6 | `backmatter/acknowledgements.tex` | 致谢 |
-| 7 | `references/references.bib` | 参考文献数据库 |
+| 1 | `学生信息.tex` | 学号、姓名、题目、学院、专业、指导教师 |
+| 2 | `摘要/摘要.tex` | 中文摘要、英文摘要、关键词 |
+| 3 | `章节/第一章.tex` | 第 1 章 绪论 |
+| 4 | `章节/第二章.tex` | 第 2 章 相关理论与基础知识 |
+| 5 | `章节/第三章.tex` | 第 3 章 需求分析与方案设计 |
+| 6 | `章节/第四章.tex` | 第 4 章 系统实现 |
+| 7 | `章节/第五章.tex` | 第 5 章 实验与结果分析 |
+| 8 | `章节/第六章.tex` | 第 6 章 总结与展望 |
+| 9 | `致谢与附录/致谢.tex` | 致谢 |
+| 10 | `致谢与附录/附录A.tex` | 附录（没有可在 `thesis.tex` 注释掉） |
+| 11 | `参考文献/参考文献.bib` | 参考文献数据库 |
+| 12 | `图片/` | 自己的插图放这里 |
 
-一般不要改这些文件：
+## 学生不需要改动的文件
 
-| 文件 | 用途 |
+以下文件是排版模板，不要动。有问题联系老师：
+
+| 文件/目录 | 用途 |
 | :-- | :-- |
-| `gdutthesis.cls` | 学校版式、标题、页边距、目录、页码等 |
-| `mygdut.sty` | 代码、算法、表格等辅助设置 |
-| `template/cover.tex` | 封面版式 |
+| `封面模板/封面.tex` | 封面版式 |
+| `gdutthesis.cls` | 学校版式、字号、页边距、目录、页码等 |
+| `mygdut.sty` | 代码块与算法环境 |
+| `Makefile` | 编译脚本 |
+| `图片/xiaohui.jpg`、`图片/mingchen.jpg` | 学校校徽与校名（封面用） |
 
-`thesis.tex` 是总入口，用来决定论文装订顺序。需要新增章节时才需要改它。
+`thesis.tex` 是总入口，决定论文装订顺序。只有在增减章节时才改它。
 
 ## 编译
 
 ### 本地编译
 
-安装 TeX Live 2020 及以上，然后在本目录运行：
+安装 TeX Live 2020 及以上，在本目录运行：
 
 ```bash
-make
+make           # 生成 thesis.pdf
+make view      # 编译并打开 PDF（macOS）
+make clean     # 清理临时文件
 ```
 
-常用命令：
-
-```bash
-make          # 生成 thesis.pdf
-make view     # 编译并打开 PDF（macOS）
-make clean    # 清理临时文件
-```
-
-不使用 Make 时也可以手动运行：
+不使用 Make 时，手动：
 
 ```bash
 xelatex thesis
-bibtex thesis
+bibtex  thesis
 xelatex thesis
 xelatex thesis
 ```
 
 ### Overleaf 编译
 
-将整个文件夹上传到 Overleaf，并将编译器设为 **XeLaTeX**。
+将整个文件夹上传到 Overleaf，将编译器设为 **XeLaTeX**。
 
 如果 Overleaf 没有 macOS 字体，请把 `thesis.tex` 第一行附近的
 
@@ -76,37 +79,37 @@ Windows 本地编译通常可用：
 \documentclass[ttf,twoside,cn]{gdutthesis}
 ```
 
-## 新增章节
+## 新增或删除章节
 
-例如要增加第 4 章：
+模板默认六章。若要减少或增加章节，改两处：
 
-1. 在 `chapters/` 里新建 `04-experiment.tex`。
-2. 在文件开头写 `\chapter{实验与结果分析}`。
-3. 在 `thesis.tex` 的正文部分加入：
+1. `章节/` 目录下新增或删除 `第N章.tex`。
+2. `thesis.tex` 正文部分对应增删一行 `\input{章节/第N章}`。
+
+例如增加第七章：
 
 ```tex
-\input{chapters/04-experiment}
+\input{章节/第七章}
 ```
 
-建议文件名使用 `01-...`、`02-...` 这种编号，目录里会更容易排序。
+## 插入图片和引用文献
 
-## 插入图片和参考文献
-
-图片放到 `figures/` 目录，在正文中这样引用：
+图片放到 `图片/` 目录，正文里这样引用：
 
 ```tex
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.5\linewidth]{xiaohui.jpg}
+\includegraphics[width=0.5\linewidth]{your-figure.jpg}
 \caption{示例图}
-\label{fig:logo}
+\label{fig:example}
 \end{figure}
 ```
 
-参考文献写到 `references/references.bib`，正文中用：
+参考文献条目写到 `参考文献/参考文献.bib`，正文中用：
 
 ```tex
-\cite{example1}
+\cite{example1}      % 普通引用
+\upcite{example1}    % 上标式引用
 ```
 
 ## 外文译文装订册
@@ -115,42 +118,46 @@ Windows 本地编译通常可用：
 
 | 文件 | 用途 |
 | :-- | :-- |
-| `translation/translated-article.tex` | 外文参考文献译文 |
-| `translation/original-article.tex` | 外文参考文献原文 |
+| `外文译文/译文.tex` | 外文参考文献译文 |
+| `外文译文/原文.tex` | 外文参考文献原文 |
 
-编译外文译文装订册时，把 `thesis.tex` 中的 `cn` 改为 `en`：
+编译外文装订册时，把 `thesis.tex` 中的 `cn` 改为 `en`：
 
 ```tex
 \documentclass[mac,twoside,en]{gdutthesis}
 ```
 
-编译完成后如需继续写中文主论文，再改回 `cn`。
+编译完成后要继续写中文主论文，再改回 `cn`。
 
 ## 目录结构
 
 ```text
 .
-├── thesis.tex                     总入口：控制装订顺序
-├── student-info.tex               学生信息：题目、姓名、学院等
-├── frontmatter/
-│   └── abstract.tex               中英文摘要
-├── chapters/
-│   ├── 01-introduction.tex        绪论
-│   ├── 02-main-content.tex        正文主体
-│   └── 03-conclusion.tex          结论
-├── backmatter/
-│   ├── acknowledgements.tex       致谢
-│   └── appendix-a.tex             附录
-├── translation/
-│   ├── translated-article.tex     外文译文
-│   └── original-article.tex       外文原文
-├── references/
-│   └── references.bib             参考文献
-├── figures/                       图片
-├── template/                      模板内部文件
-├── gdutthesis.cls                 学校论文版式
-├── mygdut.sty                     常用宏包设置
-└── Makefile                       编译脚本
+├── thesis.tex                      总入口【不需改动，除非增删章节】
+├── 学生信息.tex                    【需要改动】题目、姓名、学院等
+├── 摘要/
+│   └── 摘要.tex                    【需要改动】中英文摘要
+├── 章节/                           【需要改动】正文六章
+│   ├── 第一章.tex                  绪论
+│   ├── 第二章.tex                  相关理论与基础知识
+│   ├── 第三章.tex                  需求分析与方案设计
+│   ├── 第四章.tex                  系统实现
+│   ├── 第五章.tex                  实验与结果分析
+│   └── 第六章.tex                  总结与展望
+├── 致谢与附录/                     【需要改动】
+│   ├── 致谢.tex                    致谢
+│   └── 附录A.tex                   附录 A（可选）
+├── 参考文献/                       【需要改动】
+│   └── 参考文献.bib                BibTeX 数据库
+├── 图片/                           【需要改动】放自己的插图
+├── 外文译文/                       【需要改动：en 模式才用】
+│   ├── 译文.tex                    外文译文
+│   └── 原文.tex                    外文原文
+├── 封面模板/                       【不需改动】
+│   └── 封面.tex                    封面版式
+├── gdutthesis.cls                  【不需改动】学校论文版式
+├── mygdut.sty                      【不需改动】常用宏包设置
+└── Makefile                        【不需改动】编译脚本
 ```
 
 ## 版式核对
@@ -170,8 +177,4 @@ Windows 本地编译通常可用：
 
 定稿前请对照 `广东工业大学毕业设计（论文）手册.pdf` 的样张复核。
 
-## 致谢
 
-本模板在早期版本的基础上整理而成，原始版本参考了华南师范大学
-潘伟洲同学的 SCNU 论文模板；参考文献使用 TeX Live 官方
-`gbt7714` 宏包（GB/T 7714-2015 numerical 样式）。

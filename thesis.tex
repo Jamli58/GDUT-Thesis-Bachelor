@@ -1,11 +1,20 @@
 % ======================================================================
-% 广东工业大学本科毕业设计（论文）LaTeX 模板
+% 广东工业大学本科毕业设计（论文）LaTeX 模板 —— 主文件
 %
-% 学生通常只需要：
-%   1. 修改 student-info.tex
-%   2. 修改 frontmatter/abstract.tex
-%   3. 修改 chapters/ 里的章节文件
-%   4. 修改 references/references.bib
+% 学生通常只需要按这个顺序改文件：
+%   1. 学生信息.tex              —— 学号、姓名、题目、学院、专业等
+%   2. 摘要/摘要.tex             —— 中英文摘要与关键词
+%   3. 章节/第一章.tex ~ 第六章.tex  —— 正文各章
+%   4. 致谢与附录/致谢.tex        —— 致谢
+%   5. 致谢与附录/附录A.tex        —— 附录（可选）
+%   6. 参考文献/参考文献.bib      —— 参考文献数据库
+%   7. 图片/                     —— 放自己的插图
+%
+% 以下文件一般【不要改】：
+%   - thesis.tex                 本文件，只在新增章节时才需要改
+%   - gdutthesis.cls             学校版式、字号、页边距、目录等
+%   - mygdut.sty                 代码块与算法环境
+%   - 封面模板/封面.tex          封面版式
 %
 % 文档类选项：
 %   ttf / otf / mac  字体方案：
@@ -17,35 +26,38 @@
 % ======================================================================
 \documentclass[mac,twoside,cn]{gdutthesis}
 \usepackage{mygdut}
-\input{student-info}
+\input{学生信息}
 
 \begin{document}
-\graphicspath{{figures/}}
+\graphicspath{{图片/}}
 
 %========================= 前置部分 =========================
 \frontmatter
-\input{template/cover}                    % 封面
-\iftrans{\input{frontmatter/abstract}}{}  % 中英文摘要
-\tableofcontents                          % 目录
+\input{封面模板/封面}                    % 封面【不需改动】
+\iftrans{\input{摘要/摘要}}{}            % 中英文摘要【需要改动】
+\tableofcontents                         % 目录【自动生成】
 
 %========================= 正文部分 =========================
 \mainmatter
 \iftrans{%
-  \input{chapters/01-introduction}%       % 绪论
-  \input{chapters/02-main-content}%       % 正文主体
-  \input{chapters/03-conclusion}%         % 结论
+  \input{章节/第一章}%                   % 绪论
+  \input{章节/第二章}%                   % 相关理论与基础知识
+  \input{章节/第三章}%                   % 需求分析与方案设计
+  \input{章节/第四章}%                   % 系统实现
+  \input{章节/第五章}%                   % 实验与结果分析
+  \input{章节/第六章}%                   % 总结与展望
 }{%
-  \input{translation/translated-article}% % 译文（en 模式）
-  \input{translation/original-article}%   % 原文（en 模式）
+  \input{外文译文/译文}%                 % 译文（en 模式）
+  \input{外文译文/原文}%                 % 原文（en 模式）
 }
 
 %========================= 参考文献 =========================
 \bibliographystyle{gbt7714-numerical}
-\iftrans{\bibliography{references/references}}{}
+\iftrans{\bibliography{参考文献/参考文献}}{}
 
 %========================= 致谢与附录 =========================
-\iftrans{\input{backmatter/acknowledgements}}{} % 致谢
+\iftrans{\input{致谢与附录/致谢}}{}      % 致谢【需要改动】
 \backmatter
-\iftrans{\input{backmatter/appendix-a}}{} % 附录
+\iftrans{\input{致谢与附录/附录A}}{}     % 附录【可选：需要改动】
 
 \end{document}

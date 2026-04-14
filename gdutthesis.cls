@@ -52,7 +52,7 @@
 \RequirePackage[CJKnumber,no-math,BoldFont,SlantFont]{xeCJK}
 \RequirePackage{indentfirst}
 \RequirePackage[numbers,sort&compress,square]{natbib}
-\RequirePackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
+\RequirePackage[CJKbookmarks=true,hidelinks]{hyperref}
 
 %------------------------------------------------------------------------
 %其他
