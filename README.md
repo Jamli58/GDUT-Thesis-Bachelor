@@ -29,8 +29,7 @@
 | 文件 | 用途 |
 | :-- | :-- |
 | `封面.tex` | 封面版式 |
-| `gdutthesis.cls` | 学校版式、字号、页边距、目录、页码等 |
-| `mygdut.sty` | 代码块与算法环境 |
+| `样式/` | 学校版式、字号、页边距、目录、页码、代码块等 |
 | `Makefile` | 编译脚本 |
 | `图片/xiaohui.jpg`、`图片/mingchen.jpg` | 学校校徽与校名（封面用） |
 
@@ -151,8 +150,9 @@ Windows 本地编译通常可用：
 ├── 外文译文/                       【需要改动：en 模式才用】
 │   ├── 译文.tex                    外文译文
 │   └── 原文.tex                    外文原文
-├── gdutthesis.cls                  【不需改动】学校论文版式
-├── mygdut.sty                      【不需改动】常用宏包设置
+├── 样式/                           【不需改动】学校论文版式与宏包
+│   ├── gdutthesis.cls              学校论文版式
+│   └── mygdut.sty                  常用宏包设置
 └── Makefile                        【不需改动】编译脚本
 ```
 
@@ -172,3 +172,11 @@ Windows 本地编译通常可用：
 - 参考文献：GB/T 7714-2015 numerical 样式
 
 定稿前请对照 `广东工业大学毕业设计（论文）手册.pdf` 的样张复核。
+
+## 维护者
+
+本模板由 **黎坚** 基于 2025 版《广东工业大学毕业设计（论文）手册》整理维护。
+
+项目地址：<https://github.com/Jamli58/GDUT-Thesis-Bachelor>
+
+使用中发现 bug 或有改进建议，欢迎到 GitHub 提 Issue 或 Pull Request。
