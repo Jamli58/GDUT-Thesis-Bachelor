@@ -15,7 +15,7 @@ OPENER  := open
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex 学生信息.tex 封面.tex 参考文献.bib \
+$(MAIN).pdf: $(MAIN).tex 学生信息.tex 封面.tex 书脊.tex 参考文献.bib \
              $(wildcard 正文/*.tex) \
              $(wildcard 外文译文/*.tex) \
              $(wildcard 样式/*.cls) $(wildcard 样式/*.sty)
