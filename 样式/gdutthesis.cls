@@ -177,6 +177,15 @@
 	\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
 \fi
 
+\newif\ifgdut@skipnextclearpage
+\newcommand{\gdut@chapterclearpage}{%
+	\ifgdut@skipnextclearpage
+		\global\gdut@skipnextclearpagefalse
+	\else
+		\if@openright\cleardoublepage\else\clearpage\fi
+	\fi
+}
+
 \renewcommand\frontmatter{%
 	\if@openright\cleardoublepage\else\clearpage\fi
 	\@mainmatterfalse
@@ -192,11 +201,15 @@
 	% 表内文字为五号，使用正常表格行距，不继承正文 1.5 倍行距。
 	\def\@tabular{\fontsize{10.5bp}{12.6bp}\selectfont\old@tabular}
 	\pagestyle{mainpage}
+	% \mainmatter 已经结束前置部分，紧随其后的第一章不需要再次清页。
+	\global\gdut@skipnextclearpagetrue
 }
 
 \renewcommand\backmatter{%
 	\if@openright\cleardoublepage\else\clearpage\fi
 	\pagestyle{backpage}
+	% \backmatter 已经结束致谢页，紧随其后的附录环境不需要再次清页。
+	\global\gdut@skipnextclearpagetrue
 }
 	
 \newenvironment{ack}{%
@@ -228,7 +241,7 @@
 
 \newcommand{\appxtle}[1]{\appx{#1}\par\addcontentsline{toc}{chapter}{附录\theappx}}
 
-\newenvironment{appxchp}{\clearpage\@afterheading}{}
+\newenvironment{appxchp}{\gdut@chapterclearpage\@afterheading}{}
 
 %------------------------------------------------------------------------
 %单面打印设置
@@ -290,14 +303,13 @@
 %------------------------------------------------------------------------
 %标题与目录设置
 %------------------------------------------------------------------------
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+\renewcommand\chapter{\gdut@chapterclearpage
 						\global\@topnum\z@
 						\@afterindentfalse
 						\secdef\gdut@chapter\@schapter}
 
 \def\gdut@chapter[#1]#2{
 	\ifnum \c@secnumdepth >\m@ne
-		\if@openright\cleardoublepage\else\clearpage\fi
 		\phantomsection %指引到标签\label所在的位置
 		\if@mainmatter
 			\refstepcounter{chapter}%

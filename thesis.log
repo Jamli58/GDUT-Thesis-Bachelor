@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.9)  15 APR 2026 00:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.9)  15 APR 2026 01:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1193,14 +1193,7 @@ ext;"
 
  [6] (./正文/第一章.tex [1
 
-] [2
-
-] [3
-
-]) (./正文/第二章.tex
-[4] [5
-
-]
+]) (./正文/第二章.tex [2]
 
 Package fontspec Warning: Font "Songti SC" does not contain requested Script
 (fontspec)                "CJK".
@@ -1218,40 +1211,29 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.43146> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.43146> not available
 (Font)              size <8> substituted on input line 18.
 
-) (./正文/第三章.tex [6
+) (./正文/第三章.tex [3
 
-] [7
-
-]) (./正文/第四章.tex [8
-
-] [9
+]) (./正文/第四章.tex [4
 
 ]
 File: 图片//xiaohui.jpg Graphic file (type bmp)
 <图片//xiaohui.jpg>
-) (./正文/第五章.tex [10
+) (./正文/第五章.tex [5
 
-] [11
+]) (./正文/第六章.tex
+[6
 
-])
-(./正文/第六章.tex [12
+]) (./thesis.bbl [7
 
-] [13
+]) (./正文/致谢.tex [8
 
-]) (./thesis.bbl [14
+]) [9
 
-]) (./正文/致谢.tex [15
-
-]) [16
-
-]
-(./正文/附录A.tex [17
-
-])
+] (./正文/附录A.tex)
 \tf@thm=\write6
 \openout6 = `thesis.thm'.
 
- [18
+ [10
 
 ] (./thesis.aux)
 
@@ -1262,12 +1244,12 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 3FADD0D087346FA398291573EAEAE70B;3334.
  ) 
 Here is how much of TeX's memory you used:
- 21315 strings out of 476683
- 419909 string characters out of 5804048
+ 21319 strings out of 476683
+ 420007 string characters out of 5804048
  1860018 words of memory out of 5000000
- 41144 multiletter control sequences out of 15000+600000
+ 41148 multiletter control sequences out of 15000+600000
  549971 words of font info for 210 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  87i,12n,95p,319b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on thesis.pdf (24 pages).
+Output written on thesis.pdf (16 pages).

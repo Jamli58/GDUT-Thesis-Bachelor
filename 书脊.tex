@@ -6,7 +6,7 @@
 %   - 论文题目：四号黑体加粗，距页面顶端 20 mm
 %   - 学生姓名：四号黑体加粗，位于题目与学院名之间
 %   - 学院名称：小四号黑体加粗，距页面底端 20 mm
-%   - 所有字符竖排（逐字换行，紧贴排列）
+%   - 所有字符竖排（逐字换行，适度放大字距）
 %
 % 题目、姓名、学院名均取自根目录的 学生信息.tex，不用在本文件里改。
 % 书脊通常由打印社单独裁切，这里以整页 A4 输出供参考。
@@ -14,7 +14,7 @@
 % 说明：
 %   - 使用临时零页边距让灰色书脊条覆盖整页高度。
 %   - 页面输出后恢复原页边距，但不额外换页，避免书脊后插入空白页。
-%   - 三个 minipage 内部强制 baselineskip = 字号，避免继承正文 1.5 倍行距。
+%   - 三个 minipage 内部强制 baselineskip 略大于字号，让竖排文字更舒展。
 %   - 两段 \vfill 负责均匀分配题目、姓名、学院名之间的空白。
 %------------------------------------------------------------------------
 \newgeometry{margin=0pt}
@@ -35,20 +35,20 @@
       % —— 顶部留白 20 mm ——
       \vspace*{20mm}
 
-      % 论文题目（四号黑体加粗，baseline = 1em，逐字竖排）
-      {\fontsize{14bp}{14bp}\heiti\bfseries\selectfont
+      % 论文题目（四号黑体加粗，逐字竖排）
+      {\fontsize{14bp}{18bp}\heiti\bfseries\selectfont
        \begin{minipage}[t]{1em}\centering\@title\end{minipage}\par}
 
       \vfill
 
-      % 学生姓名（四号黑体加粗，baseline = 1em，逐字竖排）
-      {\fontsize{14bp}{14bp}\heiti\bfseries\selectfont
+      % 学生姓名（四号黑体加粗，逐字竖排）
+      {\fontsize{14bp}{18bp}\heiti\bfseries\selectfont
        \begin{minipage}[t]{1em}\centering\@author\end{minipage}\par}
 
       \vfill
 
-      % 学院名称（小四号黑体加粗，baseline = 1em，逐字竖排）
-      {\fontsize{12bp}{12bp}\heiti\bfseries\selectfont
+      % 学院名称（小四号黑体加粗，逐字竖排）
+      {\fontsize{12bp}{18bp}\heiti\bfseries\selectfont
        \begin{minipage}[t]{1em}\centering\@college\end{minipage}\par}
 
       % —— 底部留白 20 mm ——
