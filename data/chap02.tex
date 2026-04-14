@@ -1,0 +1,51 @@
+\chapter{正文主体}
+\label{chap:body}
+
+\section{理论基础}
+\hspace{2em}在本节中介绍与课题相关的基本理论、基本概念或技术原理，
+作为后续章节的铺垫。
+
+\subsection{基本概念}
+\hspace{2em}给出基本概念的定义与说明。需要引用文献时使用
+\verb|\cite{...}|，上标式引用使用 \verb|\upcite{...}|。
+
+\subsection{公式示例}
+\hspace{2em}正文中的公式使用 \texttt{equation} 环境编号，如
+式~\eqref{eq:example} 所示：
+\begin{equation}
+\label{eq:example}
+E = m c^{2}.
+\end{equation}
+
+\section{方案设计}
+\hspace{2em}阐述本文提出的总体方案，可从系统架构、模块划分、关键
+算法等方面展开。
+
+\subsection{图示例}
+\hspace{2em}图题位于图的下方，使用五号宋体，如图~\ref{fig:logo}
+所示。
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.25\linewidth]{xiaohui.jpg}
+\caption{示例图}
+\label{fig:logo}
+\end{figure}
+
+\subsection{表格示例}
+\hspace{2em}表题位于表的上方，使用五号黑体加粗，如
+表~\ref{tab:example} 所示。
+\begin{table}[htbp]
+\caption{示例表格}
+\label{tab:example}
+\centering
+\begin{tabularx}{0.8\linewidth}{c|X|X}\toprule
+编号 & 名称 & 说明 \\ \midrule
+1 & 条目一 & 示例说明 \\
+2 & 条目二 & 示例说明 \\
+3 & 条目三 & 示例说明 \\ \bottomrule
+\end{tabularx}
+\end{table}
+
+\section{实验与结果分析}
+\hspace{2em}给出实验环境、实验方法、实验数据与结果分析。可对结果
+进行对比与讨论，验证方案的有效性。

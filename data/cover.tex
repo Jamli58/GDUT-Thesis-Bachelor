@@ -1,0 +1,49 @@
+%------------------------------------------------------------------------
+% 封面信息（学生填写）
+%------------------------------------------------------------------------
+\serialno{3122000000}        % 学号
+\thesistitle{毕业设计论文题目}  % 中文题目
+\thesisauthor{张三}          % 学生姓名
+\supervisor{李四}            % 指导教师
+\college{XX学院}             % 学院
+\major{XX专业}               % 专业
+\majorfield{XX方向}          % 专业方向（可选）
+\grade{2022}                 % 年级（入学年份）
+\class{1}                    % 班别
+
+%------------------------------------------------------------------------
+% 封面版式（一般无需修改）
+%------------------------------------------------------------------------
+\begin{flushleft}
+\hspace{8.5mm}\includegraphics[height=2.19cm,width=2.21cm]{xiaohui.jpg}
+\end{flushleft}
+\begin{center}
+\includegraphics[height=2.96cm,width=10.56cm]{mingchen.jpg}
+\end{center}
+\vspace{6.5mm}
+\begin{center}
+{\heiti \bfseries \yihao {本科毕业设计（论文）}}
+\end{center}
+\vspace{20mm}
+\begin{center}
+\makeatletter
+\ifthenelse{\gduttranslation=0}{\heiti \erhao \textbf{\@title}}{\song \erhao {外文参考文献译文及原文}}
+\makeatother
+\end{center}
+\vspace{28mm}
+\begin{center}
+\makeatletter
+{\sanhao \heiti {学\hspace{2em}院\hspace{3mm}\dlmu{\textbf{\@college}}}}\\\vspace{2.4mm}
+{\sanhao \heiti {专\hspace{2em}业\hspace{3mm}\dlmu{\textbf{\@major}}}}\\\vspace{2.4mm}
+{\sanhao \heiti {年级班别\hspace{3mm}\dlmu{\textbf{\@grade 级（\@class）班}}}}\\\vspace{2.4mm}
+{\sanhao \heiti {学\hspace{2em}号\hspace{3mm}\dlmu{\textbf{\@serialno}}}}\\\vspace{2.4mm}
+{\sanhao \heiti {学生姓名\hspace{3mm}\dlmu{\textbf{\@author}}}}\\\vspace{2.4mm}
+{\sanhao \heiti {指导教师\hspace{3mm}\dlmu{\textbf{\@supervisor}}}}
+\makeatother
+\end{center}
+\vfill
+\begin{center}
+\makeatletter
+\sanhao \heiti {\CJK@today}
+\makeatother
+\end{center}

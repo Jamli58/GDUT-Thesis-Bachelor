@@ -1,0 +1,44 @@
+%------------------------------------------------------------------------
+% 广东工业大学本科毕业设计（论文）LaTeX 模板 —— 主文件
+%
+% 文档类选项：
+%   ttf / otf / mac  字体方案：
+%                    ttf = Windows 自带的 SimSun/SimHei
+%                    otf = Overleaf 自带的 Fandol 字体
+%                    mac = macOS 自带的 Songti SC / Heiti SC
+%   oneside          单面打印（手册默认要求）
+%   cn / en          cn=编译中文主论文；en=编译外文译文/原文装订册
+%------------------------------------------------------------------------
+\documentclass[mac,oneside,cn]{gdutthesis}
+\usepackage{mygdut}
+
+\begin{document}
+\graphicspath{{figures/}}
+
+%========================= 前置部分 =========================
+\frontmatter
+\input{data/cover}                        % 封面
+\iftrans{\input{data/abstract}}{}         % 中英文摘要
+\tableofcontents                          % 目录
+
+%========================= 正文部分 =========================
+\mainmatter
+\iftrans{%
+  \input{data/chap01}%                    % 绪论
+  \input{data/chap02}%                    % 正文主体
+  \input{data/chap03}%                    % 结论
+}{%
+  \input{data/translation}%               % 译文（en 模式）
+  \input{data/original}%                  % 原文（en 模式）
+}
+
+%========================= 参考文献 =========================
+\bibliographystyle{gbt7714-numerical}
+\iftrans{\bibliography{ref/refs}}{}
+
+%========================= 致谢与附录 =========================
+\iftrans{\input{data/ack}}{}              % 致谢
+\backmatter
+\iftrans{\input{data/appendix01}}{}       % 附录
+
+\end{document}
