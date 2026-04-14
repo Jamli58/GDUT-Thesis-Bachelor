@@ -15,13 +15,9 @@ OPENER  := open
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex 学生信息.tex \
-             $(wildcard 摘要/*.tex) \
-             $(wildcard 章节/*.tex) \
-             $(wildcard 致谢与附录/*.tex) \
+$(MAIN).pdf: $(MAIN).tex 学生信息.tex 封面.tex 参考文献.bib \
+             $(wildcard 正文/*.tex) \
              $(wildcard 外文译文/*.tex) \
-             $(wildcard 参考文献/*.bib) \
-             $(wildcard 封面模板/*.tex) \
              gdutthesis.cls mygdut.sty
 	$(LATEX) $(MAIN)
 	-$(BIBTEX) $(MAIN)
